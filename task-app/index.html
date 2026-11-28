@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>タスク管理アプリ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>タスク管理アプリ</h1>
+  </header>
+
+  <main class="board">
+
+    <!-- Todo カラム -->
+    <div class="column" id="todo" ondragover="onDragOver(event)" ondrop="onDrop(event, 'todo')">
+      <div class="column-header">
+        <h2>Todo</h2>
+        <span class="card-count" id="count-todo">0</span>
+      </div>
+      <div class="cards" id="cards-todo"></div>
+      <button class="add-btn" onclick="openModal('todo')">+ カードを追加</button>
+    </div>
+
+    <!-- In Progress カラム -->
+    <div class="column" id="in-progress" ondragover="onDragOver(event)" ondrop="onDrop(event, 'in-progress')">
+      <div class="column-header">
+        <h2>In Progress</h2>
+        <span class="card-count" id="count-in-progress">0</span>
+      </div>
+      <div class="cards" id="cards-in-progress"></div>
+      <button class="add-btn" onclick="openModal('in-progress')">+ カードを追加</button>
+    </div>
+
+    <!-- Done カラム -->
+    <div class="column" id="done" ondragover="onDragOver(event)" ondrop="onDrop(event, 'done')">
+      <div class="column-header">
+        <h2>Done</h2>
+        <span class="card-count" id="count-done">0</span>
+      </div>
+      <div class="cards" id="cards-done"></div>
+      <button class="add-btn" onclick="openModal('done')">+ カードを追加</button>
+    </div>
+
+  </main>
+
+  <!-- カード追加モーダル -->
+  <div class="modal-overlay" id="modal" onclick="closeModalOnOverlay(event)">
+    <div class="modal">
+      <h3>カードを追加</h3>
+      <input type="text" id="card-title" placeholder="タスク名を入力..." maxlength="100" />
+      <textarea id="card-desc" placeholder="説明（任意）" rows="3"></textarea>
+      <div class="modal-buttons">
+        <button class="btn-cancel" onclick="closeModal()">キャンセル</button>
+        <button class="btn-add" onclick="addCard()">追加</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
